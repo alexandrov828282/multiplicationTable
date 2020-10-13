@@ -57,11 +57,31 @@ for (let i = 0; i <= multiplier_1; i++) {
         divStr.append(divCol);
     }
 }
-
 rectangleSize(multiplier_1, multiplier_2);
 
-// let div = document.createElement('div');
-// div.className = "alert";
+let trueRes = (multiplier_1 * multiplier_2).toString();
+
+let elemResult = document.getElementById("result");
+
+let elemInput = document.getElementById("input");
+elemInput.focus();
+elemInput.addEventListener("blur", () => {
+    elemInput.focus();
+});
+
+elemInput.addEventListener("input", () => {
+    // console.log(elemInput.value.length,String(trueRes).length)
+
+    // if (elemInput.value.lenght != trueRes.length){
+    //     if(elemInput.value == String(trueRes)){
+    //         elemResult.innerHTML = 'Верно!';
+    //     }
+    // }
+
+    //if (String(elemInput.value).lenght == 2) {
+        alert(elemInput.value.length);
+    //}
+});
 
 function rectangleSize(side1, side2) {
     let elems = document.getElementsByClassName("col");
