@@ -1,5 +1,5 @@
-let multiplier_1 = 7;
-let multiplier_2 = 5;
+let multiplier_1 = 9;
+let multiplier_2 = 9;
 
 let divStr;
 let divCol;
@@ -32,7 +32,7 @@ for (let i = 0; i <= multiplier_1; i++) {
         if (j == 0 && i == 0) {
             divCol.className = "col-null";
         }
-        
+
         if (j > 0 && i == 0) {
             divCol.className = "col-vertical";
             divCol.innerHTML = j;
@@ -41,12 +41,16 @@ for (let i = 0; i <= multiplier_1; i++) {
         if (j == 0 && i > 0) {
             divCol.className = "col-horizontal";
             divCol.innerHTML = i;
-        } 
-        
-        if (j > 0 && i > 0)
-        {
-            divCol.className = "col";
-            divCol.innerHTML = i + multiplier_1 * (j-1) ;
+        }
+
+        if (j > 0 && i > 0) {
+            if (i == multiplier_1 && j == multiplier_2) {
+                divCol.className = "col-final";
+                divCol.innerHTML = i + multiplier_1 * (j - 1);
+            } else {
+                divCol.className = "col";
+                divCol.innerHTML = i + multiplier_1 * (j - 1);
+            }
         }
 
         //вставляем вновь созданный элемент в DOM
@@ -54,27 +58,82 @@ for (let i = 0; i <= multiplier_1; i++) {
     }
 }
 
-//rectangleSixe(multiplier_1, multiplier_2);
+rectangleSize(multiplier_1, multiplier_2);
 
 // let div = document.createElement('div');
 // div.className = "alert";
 
-function rectangleSixe(side1, side2) {
+function rectangleSize(side1, side2) {
     let elems = document.getElementsByClassName("col");
+    let elemsVertical = document.getElementsByClassName("col-vertical");
+    let elemsHorizontal = document.getElementsByClassName("col-horizontal");
+    let elemsHorFinal = document.getElementsByClassName("col-final");
 
-    elems[0].style.width = "300px";
+    let recSize;
+    let fSize;
 
     if (side1 == 1 || side2 == 1) {
-        for (let elem of elems) {
-            elem.style.width = "300px";
-            elem.style.height = "300px";
-        }
+        recSize = "500px";
+        fSize = "200px";
     }
 
     if (side1 == 2 || side2 == 2) {
-        for (let elem of elems) {
-            elem.style.width = "200px";
-            elem.style.height = "200px";
-        }
+        recSize = "250px";
+        fSize = "200px";
+    }
+
+    if (side1 == 3 || side2 == 3) {
+        recSize = "166px";
+        fSize = "150px";
+    }
+
+    if (side1 == 4 || side2 == 4) {
+        recSize = "125px";
+        fSize = "80px";
+    }
+
+    if (side1 == 5 || side2 == 5) {
+        recSize = "100px";
+        fSize = "60px";
+    }
+
+    if (side1 == 6 || side2 == 6) {
+        recSize = "83px";
+        fSize = "50px";
+    }
+
+    if (side1 == 7 || side2 == 7) {
+        recSize = "71px";
+        fSize = "45px";
+    }
+
+    if (side1 == 8 || side2 == 8) {
+        recSize = "62px";
+        fSize = "40px";
+    }
+
+    if (side1 == 9 || side2 == 9) {
+        recSize = "55px";
+        fSize = "35px";
+    }
+
+    for (let elem of elems) {
+        elem.style.width = recSize;
+        elem.style.height = recSize;
+        elem.style.fontSize = fSize;
+    }
+
+    for (let elem of elemsVertical) {
+        elem.style.height = recSize;
+    }
+
+    for (let elem of elemsHorizontal) {
+        elem.style.width = recSize;
+    }
+
+    for (let elem of elemsHorFinal) {
+        elem.style.width = recSize;
+        elem.style.height = recSize;
+        elem.style.fontSize = fSize;
     }
 }
