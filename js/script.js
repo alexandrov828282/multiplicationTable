@@ -1,8 +1,12 @@
-let multiplier_1 = 3;
-let multiplier_2 = 4;
+let multiplier_1 = 1;
+let multiplier_2 = 1;
 
 let divStr;
 let divCol;
+let elemExpression;
+
+//пропишем пример на странице
+
 
 //получим контейнер, куда ьудем втавлять
 let elemContainer = document.querySelector("#container");
@@ -17,7 +21,16 @@ for (let i = 0; i <= multiplier_1; i++) {
     for (let j = 0; j <= multiplier_2; j++) {
         //создадим div.col для вставки
         divCol = document.createElement("div");
-        divCol.className = "col";
+
+        if (j == 0 || i == 0) {
+            divCol.className = "index-cell";
+            if (j > 0 && i == 0) divCol.innerHTML = j;
+            if (j == 0 && i > 0) divCol.innerHTML = i;
+
+        } else {
+            divCol.className = "col";
+        }
+
         //вставляем вновь созданный элемент в DOM
         divStr.append(divCol);
     }
