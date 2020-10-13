@@ -22,6 +22,7 @@ let trueRes = (multiplier_1 * multiplier_2).toString();
 
 //фокус держим на input всегда
 elemInput.focus();
+
 elemInput.addEventListener("blur", () => {
     elemInput.focus();
 });
@@ -47,6 +48,7 @@ elemInput.addEventListener("input", () => {
 
 //отловим нажатие на клавитуре
 addEventListener("keydown", () => {
+    
     if (trueFlag) {
         // elemInput.value = '';
         location.reload();
