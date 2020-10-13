@@ -1,10 +1,59 @@
-let multiplier_1 = 9;
-let multiplier_2 = 9;
+let multiplier_1 = 5;
+let multiplier_2 = 5;
 
+let trueFlag = false;
 let divStr;
 let divCol;
 let elemExpression;
 let elemExpressionIns;
+
+// let trueRes = (multiplier_1 * multiplier_2).toString();
+let elemResult = document.getElementById("result");
+let elemInput = document.getElementById("input");
+
+let elems = document.getElementsByClassName("col");
+let elemsVertical = document.getElementsByClassName("col-vertical");
+let elemsHorizontal = document.getElementsByClassName("col-horizontal");
+let elemsHorFinal = document.getElementsByClassName("col-final");
+
+multiplier_1 = Math.floor(Math.random() * 9) + 1;
+multiplier_2 = Math.floor(Math.random() * 9) + 1;
+let trueRes = (multiplier_1 * multiplier_2).toString();
+
+//фокус держим на input всегда
+elemInput.focus();
+elemInput.addEventListener("blur", () => {
+    elemInput.focus();
+});
+
+//отловим изменения в input
+elemInput.addEventListener("input", () => {
+
+    console.log(elemInput.value.length,trueRes.length)
+
+    if (elemInput.value.length == trueRes.length){
+        if (elemInput.value == trueRes){
+            rectangleSize(multiplier_1, multiplier_2);
+            actoinTrue();
+            // elemResult.innerHTML = 'верно';
+            trueFlag = true;
+            // location.reload();
+        }
+        else{
+            // console.log(multiplier_1,multiplier_2)
+            console.log(elemInput.value,trueRes)
+            actoinFalse();
+        }
+    }
+});
+
+//отловим нажатие на клавитуре
+addEventListener("keydown", () => {
+    if (trueFlag) {
+        // elemInput.value = '';
+        location.reload();
+    }
+});
 
 //пропишем пример на странице
 elemExpression = document.querySelector("#expression");
@@ -58,36 +107,31 @@ for (let i = 0; i <= multiplier_1; i++) {
     }
 }
 rectangleSize(multiplier_1, multiplier_2);
+//скроем цифры на квадратах до правильного ответа
+// let elems = document.getElementsByClassName("col");
+for (let elem of elems) {
+    elem.style.fontSize = '0px';
+}
 
-let trueRes = (multiplier_1 * multiplier_2).toString();
+// let elemsHorFinal = document.getElementsByClassName("col-final");
+for (let elem of elemsHorFinal) {
+    elem.style.fontSize = '0px';
+}
 
-let elemResult = document.getElementById("result");
+function actoinTrue(){
+    elemResult.innerHTML = 'верно';
+}
 
-let elemInput = document.getElementById("input");
-elemInput.focus();
-elemInput.addEventListener("blur", () => {
-    elemInput.focus();
-});
-
-elemInput.addEventListener("input", () => {
-    // console.log(elemInput.value.length,String(trueRes).length)
-
-    // if (elemInput.value.lenght != trueRes.length){
-    //     if(elemInput.value == String(trueRes)){
-    //         elemResult.innerHTML = 'Верно!';
-    //     }
-    // }
-
-    //if (String(elemInput.value).lenght == 2) {
-        alert(elemInput.value.length);
-    //}
-});
+function actoinFalse(){
+    elemResult.innerHTML = 'не верно';
+    elemInput.value = '';
+}
 
 function rectangleSize(side1, side2) {
-    let elems = document.getElementsByClassName("col");
-    let elemsVertical = document.getElementsByClassName("col-vertical");
-    let elemsHorizontal = document.getElementsByClassName("col-horizontal");
-    let elemsHorFinal = document.getElementsByClassName("col-final");
+    // let elems = document.getElementsByClassName("col");
+    // let elemsVertical = document.getElementsByClassName("col-vertical");
+    // let elemsHorizontal = document.getElementsByClassName("col-horizontal");
+    // let elemsHorFinal = document.getElementsByClassName("col-final");
 
     let recSize;
     let fSize;
