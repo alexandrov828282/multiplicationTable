@@ -28,20 +28,18 @@ elemInput.addEventListener("blur", () => {
 
 //отловим изменения в input
 elemInput.addEventListener("input", () => {
+    console.log(elemInput.value.length, trueRes.length);
 
-    console.log(elemInput.value.length,trueRes.length)
-
-    if (elemInput.value.length == trueRes.length){
-        if (elemInput.value == trueRes){
+    if (elemInput.value.length == trueRes.length) {
+        if (elemInput.value == trueRes) {
             rectangleSize(multiplier_1, multiplier_2);
             actoinTrue();
             // elemResult.innerHTML = 'верно';
             trueFlag = true;
             // location.reload();
-        }
-        else{
+        } else {
             // console.log(multiplier_1,multiplier_2)
-            console.log(elemInput.value,trueRes)
+            console.log(elemInput.value, trueRes);
             actoinFalse();
         }
     }
@@ -110,21 +108,45 @@ rectangleSize(multiplier_1, multiplier_2);
 //скроем цифры на квадратах до правильного ответа
 // let elems = document.getElementsByClassName("col");
 for (let elem of elems) {
-    elem.style.fontSize = '0px';
+    elem.style.fontSize = "0px";
 }
 
 // let elemsHorFinal = document.getElementsByClassName("col-final");
 for (let elem of elemsHorFinal) {
-    elem.style.fontSize = '0px';
+    elem.style.fontSize = "0px";
 }
 
-function actoinTrue(){
-    elemResult.innerHTML = 'верно';
+function actoinTrue() {
+    arrTrue = [
+        "Молодчина!!!",
+        "Так держать!",
+        "Ты супер!",
+        "Вот голова!",
+        "Умничка!!!",
+        "Точно!",
+        "Да! Да! Да!",
+        "Абсолютно правильно!",
+        "Классно!",
+    ];
+    let index = Math.floor(Math.random() * 9) + 1;
+    elemResult.innerHTML = arrTrue[index - 1];
 }
 
-function actoinFalse(){
-    elemResult.innerHTML = 'не верно';
-    elemInput.value = '';
+function actoinFalse() {
+    arrTrue = [
+        "Нее, ты чего",
+        "Ну ка ещё разок",
+        "Да прям...",
+        "Шевели извилинками давай",
+        "Да нет же...",
+        "Если совсем не можешь, посчитай",
+        "Не торопись, всё получится",
+        "Думай, думай, думай, Полюша",
+        "Да нуууу...",
+    ];
+    let index = Math.floor(Math.random() * 9) + 1;
+    elemResult.innerHTML = arrTrue[index - 1];
+    elemInput.value = "";
 }
 
 function rectangleSize(side1, side2) {
